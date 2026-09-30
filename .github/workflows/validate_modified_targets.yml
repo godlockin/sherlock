@@ -22,19 +22,15 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
         with:
           python-version: "3.13"
-
-      - name: Install Poetry
-        uses: abatilo/actions-poetry@v4
-        with:
-          poetry-version: "latest"
+          enable-cache: true
 
       - name: Install dependencies
         run: |
-          poetry install --no-interaction --with dev
+          uv sync
 
       - name: Prepare JSON versions for comparison
         run: |
@@ -86,7 +82,7 @@ jobs:
       - name: Validate remote manifest against local schema
         if: steps.discover-modified.outputs.changed_targets != ''
         run: |
-          poetry run pytest tests/test_manifest.py::test_validate_manifest_against_local_schema
+          uv run pytest tests/test_manifest.py::test_validate_manifest_against_local_schema
 
       # --- The rest of the steps below are unchanged ---
 
@@ -94,7 +90,7 @@ jobs:
         env:
           CHANGED_TARGETS: ${{ steps.discover-modified.outputs.changed_targets }}
         run: |
-          poetry run pytest -q --tb no -rA -m validate_targets -n 20 \
+          uv run pytest -q --tb no -rA -m validate_targets -n 20 \
             --chunked-sites "$CHANGED_TARGETS" \
             --junitxml=validation_results.xml
 
@@ -103,7 +99,7 @@ jobs:
         id: prepare-summary
         run: |
           summary=$(
-            poetry run python devel/summarize_site_validation.py validation_results.xml || echo "Failed to generate summary of test results"
+            uv run python devel/summarize_site_validation.py validation_results.xml || echo "Failed to generate summary of test results"
           )
           echo "$summary" > validation_summary.md
 

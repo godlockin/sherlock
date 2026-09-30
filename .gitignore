@@ -1,9 +1,9 @@
 # Virtual Environments
 venv/
+.venv/
 bin/
 lib/
 pyvenv.cfg
-poetry.lock
 
 # Regression Testing
 .coverage
