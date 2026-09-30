@@ -25,6 +25,7 @@ from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from json import loads as json_loads
 from time import monotonic
 from typing import Optional
+from urllib.parse import quote
 
 import requests
 from requests_futures.sessions import FuturesSession
@@ -244,8 +245,12 @@ def sherlock(
             # Override/append any extra headers required by a given site.
             headers.update(net_info["headers"])
 
+        # URL-encode username once; space -> %20, along with all other
+        # reserved/non-ASCII characters. Both display and probe URLs use it.
+        encoded_username = quote(username, safe="")
+
         # URL of user on site (if it exists)
-        url = interpolate_string(net_info["url"], username.replace(' ', '%20'))
+        url = interpolate_string(net_info["url"], encoded_username)
 
         # Don't make request if username is invalid for the site
         regex_check = net_info.get("regexCheck")
@@ -287,14 +292,18 @@ def sherlock(
             else:
                 # There is a special URL for probing existence separate
                 # from where the user profile normally can be found.
-                url_probe = interpolate_string(url_probe, username)
+                url_probe = interpolate_string(url_probe, encoded_username)
 
+            # Track whether we picked HEAD automatically so a GET fallback
+            # can be issued if the site rejects HEAD.
+            auto_head = False
             if request is None:
                 if net_info["errorType"] == "status_code":
                     # In most cases when we are detecting by status code,
                     # it is not necessary to get the entire body:  we can
                     # detect fine with just the HEAD response.
                     request = session.head
+                    auto_head = True
                 else:
                     # Either this detect method needs the content associated
                     # with the GET response, or this specific website will
@@ -312,27 +321,22 @@ def sherlock(
                 allow_redirects = True
 
             # This future starts running the request in a new thread, doesn't block the main thread
+            request_kwargs = {
+                "headers": headers,
+                "allow_redirects": allow_redirects,
+                "timeout": timeout,
+                "json": request_payload,
+            }
             if proxy is not None:
-                proxies = {"http": proxy, "https": proxy}
-                future = request(
-                    url=url_probe,
-                    headers=headers,
-                    proxies=proxies,
-                    allow_redirects=allow_redirects,
-                    timeout=timeout,
-                    json=request_payload,
-                )
-            else:
-                future = request(
-                    url=url_probe,
-                    headers=headers,
-                    allow_redirects=allow_redirects,
-                    timeout=timeout,
-                    json=request_payload,
-                )
+                request_kwargs["proxies"] = {"http": proxy, "https": proxy}
+
+            future = request(url=url_probe, **request_kwargs)
 
             # Store future in data for access later
             net_info["request_future"] = future
+            net_info["auto_head"] = auto_head
+            net_info["probe_url"] = url_probe
+            net_info["request_kwargs"] = request_kwargs
 
         # Add this site's results into final dictionary with all the other results.
         results_total[social_network] = results_site
@@ -360,6 +364,21 @@ def sherlock(
             request_future=future, error_type=error_type, social_network=social_network
         )
 
+        if (
+            error_text is None
+            and net_info.get("auto_head")
+            and r.status_code in (405, 501)
+        ):
+            # Site rejected the automatic HEAD request; re-probe with GET.
+            fallback_future = session.get(
+                url=net_info["probe_url"], **net_info["request_kwargs"]
+            )
+            r, error_text, exception_text = get_response(
+                request_future=fallback_future,
+                error_type=error_type,
+                social_network=social_network,
+            )
+
         # Get response time for response of our request.
         try:
             response_time = r.elapsed
@@ -372,7 +391,7 @@ def sherlock(
         except Exception:
             http_status = "?"
         try:
-            response_text = r.text.encode(r.encoding or "UTF-8")
+            response_text = r.text
         except Exception:
             response_text = ""
 
@@ -500,6 +519,10 @@ def sherlock(
 
         # Add this site's results into final dictionary with all of the other results.
         results_total[social_network] = results_site
+
+    # Release connections and background worker threads.
+    underlying_session.close()
+    session.executor.shutdown(wait=True)
 
     return results_total
 
@@ -902,10 +925,11 @@ def main():
                 ):
                     continue
 
-                if response_time_s is None:
+                response_time = results[site]["status"].query_time
+                if response_time is None:
                     response_time_s.append("")
                 else:
-                    response_time_s.append(results[site]["status"].query_time)
+                    response_time_s.append(response_time)
                 usernames.append(username)
                 names.append(site)
                 url_main.append(results[site]["url_main"])
@@ -924,7 +948,11 @@ def main():
                     "response_time_s": response_time_s,
                 }
             )
-            DataFrame.to_excel(f"{username}.xlsx", sheet_name="sheet1", index=False)
+            xlsx_file = f"{username}.xlsx"
+            if args.folderoutput:
+                os.makedirs(args.folderoutput, exist_ok=True)
+                xlsx_file = os.path.join(args.folderoutput, xlsx_file)
+            DataFrame.to_excel(xlsx_file, sheet_name="sheet1", index=False)
 
         print()
     query_notify.finish()

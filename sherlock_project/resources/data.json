@@ -201,7 +201,6 @@
   },
   "Avizo": {
     "errorType": "response_url",
-    "errorUrl": "https://www.avizo.cz/",
     "url": "https://www.avizo.cz/{}/",
     "urlMain": "https://www.avizo.cz/",
     "username_claimed": "blue"
@@ -215,7 +214,6 @@
   },
   "BOOTH": {
     "errorType": "response_url",
-    "errorUrl": "https://booth.pm/",
     "regexCheck": "^[\\w@-]+?$",
     "url": "https://{}.booth.pm/",
     "urlMain": "https://booth.pm/",
@@ -229,7 +227,6 @@
   },
   "Bazar.cz": {
     "errorType": "response_url",
-    "errorUrl": "https://www.bazar.cz/error404.aspx",
     "url": "https://www.bazar.cz/{}/",
     "urlMain": "https://www.bazar.cz/",
     "username_claimed": "pianina"
@@ -399,7 +396,6 @@
   },
   "Carbonmade": {
     "errorType": "response_url",
-    "errorUrl": "https://carbonmade.com/fourohfour?domain={}.carbonmade.com",
     "regexCheck": "^[\\w@-]+?$",
     "url": "https://{}.carbonmade.com",
     "urlMain": "https://carbonmade.com/",
@@ -514,7 +510,6 @@
   },
   "Codechef": {
     "errorType": "response_url",
-    "errorUrl": "https://www.codechef.com/",
     "url": "https://www.codechef.com/users/{}",
     "urlMain": "https://www.codechef.com/",
     "username_claimed": "blue"
@@ -583,7 +578,6 @@
   },
   "Contently": {
     "errorType": "response_url",
-    "errorUrl": "https://contently.com",
     "regexCheck": "^[a-zA-Z][a-zA-Z0-9_-]*$",
     "url": "https://{}.contently.com/",
     "urlMain": "https://contently.com/",
@@ -604,7 +598,6 @@
   },
   "Cracked": {
     "errorType": "response_url",
-    "errorUrl": "https://www.cracked.com/",
     "url": "https://www.cracked.com/members/{}/",
     "urlMain": "https://www.cracked.com/",
     "username_claimed": "blue"
@@ -637,7 +630,6 @@
   },
   "CryptoHack": {
     "errorType": "response_url",
-    "errorUrl": "https://cryptohack.org/",
     "url": "https://cryptohack.org/user/{}/",
     "urlMain": "https://cryptohack.org/",
     "username_claimed": "blue"
@@ -851,7 +843,6 @@
   },
   "Fanpop": {
     "errorType": "response_url",
-    "errorUrl": "https://www.fanpop.com/",
     "url": "https://www.fanpop.com/fans/{}",
     "urlMain": "https://www.fanpop.com/",
     "username_claimed": "blue"
@@ -933,7 +924,6 @@
   },
   "GNOME VCS": {
     "errorType": "response_url",
-    "errorUrl": "https://gitlab.gnome.org/{}",
     "regexCheck": "^(?!-)[a-zA-Z0-9_.-]{2,255}(?<!\\.)$",
     "url": "https://gitlab.gnome.org/{}",
     "urlMain": "https://gitlab.gnome.org/",
@@ -1068,7 +1058,6 @@
   },
   "Grailed": {
     "errorType": "response_url",
-    "errorUrl": "https://www.grailed.com/{}",
     "url": "https://www.grailed.com/{}",
     "urlMain": "https://www.grailed.com/",
     "username_claimed": "blue"
@@ -1241,7 +1230,6 @@
   },
   "IRC-Galleria": {
     "errorType": "response_url",
-    "errorUrl": "https://irc-galleria.net/users/search?username={}",
     "url": "https://irc-galleria.net/user/{}",
     "urlMain": "https://irc-galleria.net/",
     "username_claimed": "appas"
@@ -1453,7 +1441,6 @@
     "url": "https://www.lesswrong.com/users/{}",
     "urlMain": "https://www.lesswrong.com/",
     "errorType": "response_url",
-    "errorUrl": "https://www.lesswrong.com/",
     "username_claimed": "habryka"
   },
   "Letterboxd": {
@@ -1508,7 +1495,6 @@
   },
   "Listed": {
     "errorType": "response_url",
-    "errorUrl": "https://listed.to/@{}",
     "url": "https://listed.to/@{}",
     "urlMain": "https://listed.to/",
     "username_claimed": "listed"
@@ -1535,7 +1521,6 @@
   },
   "LushStories": {
     "errorType": "response_url",
-    "errorUrl": "https://www.lushstories.com/login",
     "isNSFW": true,
     "url": "https://www.lushstories.com/profile/{}",
     "urlMain": "https://www.lushstories.com/",
@@ -1699,7 +1684,6 @@
   },
   "Ninja Kiwi": {
     "errorType": "response_url",
-    "errorUrl": "https://ninjakiwi.com/profile/{}",
     "url": "https://ninjakiwi.com/profile/{}",
     "urlMain": "https://ninjakiwi.com/",
     "username_claimed": "Kyruko"
@@ -1798,14 +1782,12 @@
   },
   "PSNProfiles.com": {
     "errorType": "response_url",
-    "errorUrl": "https://psnprofiles.com/?psnId={}",
     "url": "https://psnprofiles.com/{}",
     "urlMain": "https://psnprofiles.com/",
     "username_claimed": "blue"
   },
   "Packagist": {
     "errorType": "response_url",
-    "errorUrl": "https://packagist.org/search/?q={}&reason=vendor_not_found",
     "url": "https://packagist.org/packages/{}/",
     "urlMain": "https://packagist.org/",
     "username_claimed": "psr"
@@ -1967,7 +1949,6 @@
   },
   "Polymart": {
     "errorType": "response_url",
-    "errorUrl": "https://polymart.org/user/-1",
     "url": "https://polymart.org/user/{}",
     "urlMain": "https://polymart.org/",
     "username_claimed": "craciu25yt"
@@ -2094,7 +2075,6 @@
   },
   "ResearchGate": {
     "errorType": "response_url",
-    "errorUrl": "https://www.researchgate.net/directory/profiles",
     "regexCheck": "\\w+_\\w+",
     "url": "https://www.researchgate.net/profile/{}",
     "urlMain": "https://www.researchgate.net/",
@@ -2624,7 +2604,6 @@
   },
   "VK": {
     "errorType": "response_url",
-    "errorUrl": "https://www.quora.com/profile/{}",
     "url": "https://vk.com/{}",
     "urlMain": "https://vk.com/",
     "username_claimed": "brown"
@@ -2769,7 +2748,6 @@
   },
   "WordPress": {
     "errorType": "response_url",
-    "errorUrl": "wordpress.com/typo/?subdomain=",
     "regexCheck": "^[a-zA-Z][a-zA-Z0-9_-]*$",
     "url": "https://{}.wordpress.com/",
     "urlMain": "https://wordpress.com",
@@ -2777,7 +2755,6 @@
   },
   "WordPressOrg": {
     "errorType": "response_url",
-    "errorUrl": "https://wordpress.org",
     "url": "https://profiles.wordpress.org/{}/",
     "urlMain": "https://wordpress.org/",
     "username_claimed": "blue"
@@ -2864,7 +2841,6 @@
   },
   "babyblogRU": {
     "errorType": "response_url",
-    "errorUrl": "https://www.babyblog.ru/",
     "url": "https://www.babyblog.ru/user/{}",
     "urlMain": "https://www.babyblog.ru/",
     "username_claimed": "blue"
@@ -2903,7 +2879,6 @@
   },
   "devRant": {
     "errorType": "response_url",
-    "errorUrl": "https://devrant.com/",
     "url": "https://devrant.com/users/{}",
     "urlMain": "https://devrant.com/",
     "username_claimed": "blue"
@@ -3021,7 +2996,6 @@
   },
   "kofi": {
     "errorType": "response_url",
-    "errorUrl": "https://ko-fi.com/art?=redirect",
     "url": "https://ko-fi.com/{}",
     "urlMain": "https://ko-fi.com",
     "username_claimed": "yeahkenny"
@@ -3168,7 +3142,6 @@
   },
   "Pinterest": {
     "errorType": "status_code",
-    "errorUrl": "https://www.pinterest.com/",
     "url": "https://www.pinterest.com/{}/",
     "urlProbe": "https://www.pinterest.com/oembed.json?url=https://www.pinterest.com/{}/",
     "urlMain": "https://www.pinterest.com/",
@@ -3183,7 +3156,6 @@
   },
   "prog.hu": {
     "errorType": "response_url",
-    "errorUrl": "https://prog.hu/azonosito/info/{}",
     "url": "https://prog.hu/azonosito/info/{}",
     "urlMain": "https://prog.hu/",
     "username_claimed": "Sting"

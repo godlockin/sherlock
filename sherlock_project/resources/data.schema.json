@@ -60,9 +60,7 @@
             { "type": "integer" },
             { "type": "array", "items": { "type": "integer" } }
           ]
-        },
-        "errorUrl": { "type": "string" },
-        "response_url": { "type": "string" }
+        }
       },
       "dependencies": {
         "errorMsg": {
@@ -73,19 +71,6 @@
                 "errorType": {
                   "type": "array",
                   "contains": { "const": "message" }
-                }
-              }
-            }
-          ]
-        },
-        "errorUrl": {
-          "oneOf": [
-            { "properties": { "errorType": { "const": "response_url" } } },
-            {
-              "properties": {
-                "errorType": {
-                  "type": "array",
-                  "contains": { "const": "response_url" }
                 }
               }
             }
@@ -121,22 +106,6 @@
             ]
           },
           "then": { "required": ["errorMsg"] }
-        },
-        {
-          "if": {
-            "anyOf": [
-              { "properties": { "errorType": { "const": "response_url" } } },
-              {
-                "properties": {
-                  "errorType": {
-                    "type": "array",
-                    "contains": { "const": "response_url" }
-                  }
-                }
-              }
-            ]
-          },
-          "then": { "required": ["errorUrl"] }
         }
       ],
       "additionalProperties": false

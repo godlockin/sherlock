@@ -29,8 +29,6 @@ classifiers = [
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Topic :: Security"
@@ -43,7 +41,7 @@ repository = "https://github.com/sherlock-project/sherlock"
 "Bug Tracker" = "https://github.com/sherlock-project/sherlock/issues"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.12"
 certifi = ">=2019.6.16"
 colorama = "^0.4.1"
 PySocks = "^1.7.0"
@@ -52,7 +50,6 @@ requests-futures = "^1.0.0"
 stem = "^1.8.0"
 pandas = "^2.2.1"
 openpyxl = "^3.0.10"
-tomli = "^2.2.1"
 
 [tool.poetry.group.dev.dependencies]
 jsonschema = "^4.0.0"
