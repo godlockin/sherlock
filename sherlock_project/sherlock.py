@@ -694,10 +694,11 @@ def main():
     )
 
     parser.add_argument(
-        "--nsfw",
+        "--no-nsfw",
         action="store_true",
+        dest="no_nsfw",
         default=False,
-        help="Include checking of NSFW sites from default list.",
+        help="Exclude NSFW sites (included by default).",
     )
 
     parser.add_argument(
@@ -791,7 +792,7 @@ def main():
         print(f"ERROR:  {error}")
         sys.exit(1)
 
-    if not args.nsfw:
+    if args.no_nsfw:
         sites.remove_nsfw_sites(do_not_remove=args.site_list)
 
     # Create original dictionary from SitesInformation() object.

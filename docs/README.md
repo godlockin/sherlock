@@ -60,7 +60,7 @@ Accounts found will be stored in an individual text file with the corresponding 
 ```console
 $ sherlock --help
 usage: sherlock [-h] [--version] [--verbose] [--folderoutput FOLDEROUTPUT] [--output OUTPUT] [--csv] [--xlsx] [--site SITE_NAME] [--proxy PROXY_URL] [--dump-response]
-                [--json JSON_FILE] [--timeout TIMEOUT] [--print-all] [--print-found] [--no-color] [--browse] [--local] [--nsfw] [--txt] [--ignore-exclusions]
+                [--json JSON_FILE] [--timeout TIMEOUT] [--print-all] [--print-found] [--no-color] [--browse] [--local] [--no-nsfw] [--txt] [--ignore-exclusions]
                 USERNAMES [USERNAMES ...]
 
 Sherlock: Find Usernames Across Social Networks (Version 0.16.0)
@@ -91,7 +91,7 @@ options:
   --no-color            Don't color terminal output
   --browse, -b          Browse to all results on default browser.
   --local, -l           Force the use of the local data.json file.
-  --nsfw                Include checking of NSFW sites from default list.
+  --no-nsfw             Exclude NSFW sites (included by default).
   --txt                 Enable creation of a txt file
   --ignore-exclusions   Ignore upstream exclusions (may return more false positives)
 ```
