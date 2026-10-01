@@ -350,6 +350,12 @@
     "urlMain": "https://buzzfeed.com/",
     "username_claimed": "blue"
   },
+  "CSDN": {
+    "errorType": "status_code",
+    "url": "https://blog.csdn.net/{}",
+    "urlMain": "https://www.csdn.net/",
+    "username_claimed": "csdnnews"
+  },
   "Cfx.re Forum": {
     "errorType": "status_code",
     "url": "https://forum.cfx.re/u/{}/summary",
@@ -362,6 +368,12 @@
     "url": "https://www.cgtrader.com/{}",
     "urlMain": "https://www.cgtrader.com",
     "username_claimed": "blue"
+  },
+  "Cnblogs": {
+    "errorType": "status_code",
+    "url": "https://www.cnblogs.com/{}",
+    "urlMain": "https://www.cnblogs.com/",
+    "username_claimed": "dudu"
   },
   "CNET": {
     "errorType": "status_code",
@@ -760,6 +772,12 @@
     "urlMain": "https://hub.docker.com/",
     "urlProbe": "https://hub.docker.com/v2/users/{}/",
     "username_claimed": "blue"
+  },
+  "Douban": {
+    "errorType": "status_code",
+    "url": "https://www.douban.com/people/{}/",
+    "urlMain": "https://www.douban.com/",
+    "username_claimed": "dongxi"
   },
   "Dribbble": {
     "errorMsg": "Whoops, that page is gone.",
@@ -1733,6 +1751,12 @@
     "urlMain": "https://opencollective.com/",
     "username_claimed": "sindresorhus"
   },
+  "OpenSea": {
+    "errorType": "status_code",
+    "url": "https://opensea.io/{}",
+    "urlMain": "https://opensea.io/",
+    "username_claimed": "snoop"
+  },
   "OpenGameArt": {
     "errorType": "status_code",
     "url": "https://opengameart.org/users/{}",
@@ -2344,6 +2368,12 @@
     "urlMain": "https://robertsspaceindustries.com/",
     "username_claimed": "blue"
   },
+  "Stack Overflow": {
+    "errorType": "status_code",
+    "url": "https://stackoverflow.com/users/{}",
+    "urlMain": "https://stackoverflow.com/",
+    "username_claimed": "1"
+  },
   "Status Cafe": {
     "errorMsg": "Page Not Found",
     "errorType": "message",
@@ -2594,6 +2624,13 @@
     "url": "https://untappd.com/user/{}",
     "urlMain": "https://untappd.com/",
     "username_claimed": "untappd"
+  },
+  "V2EX": {
+    "errorType": "status_code",
+    "request_method": "GET",
+    "url": "https://www.v2ex.com/member/{}",
+    "urlMain": "https://www.v2ex.com/",
+    "username_claimed": "Livid"
   },
   "Valorant Forums": {
     "errorMsg": "The page you requested could not be found.",
